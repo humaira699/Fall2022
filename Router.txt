@@ -1,0 +1,22 @@
+Route::get('/blog-search', function(){
+    $search1 = $_GET['search'];
+    return response($search1);
+    
+});
+Route::get('/blog-search2', function(){
+    $text = '[
+                {
+                "name" : "baked beans",
+                "price" : 0.40,
+                "image" : "beans.jpg",
+                "type" : "vegetables"
+                },
+                {
+                "name" : "hot dogs",
+                "price" : 1.99,
+                "image" : "hotdogs.jpg",
+                "type" : "meat"
+                }]';
+    // $text = "hello";
+    return response($text);
+});
