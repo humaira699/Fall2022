@@ -1,0 +1,60 @@
+<div>blog page</div>
+        <!-- <form id="contactForm" action="{{url('/blog-search')}}" method="post"> -->
+            <!-- @csrf -->
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="firstName">Search: </label>
+                        <input name="search" id="search" type="text" class="form-control" autocomplete="off" onkeyup="searchSuggest();">
+                    </div>
+                </div>                
+            </div>            
+            <div>
+                <button onclick="sendcall();">Click me</button><div id="request"></div>
+            </div>
+            <!-- <div class="text-right">
+                <input class="btn btn-primary signupBtn1" id="sendBtn" type="submit" value="Send Message">
+            </div> -->
+    <!-- </form> -->
+    <div id="demo">
+
+    </div>
+
+    
+    <script type="text/javascript">
+        sendcall=()=>{
+            
+            const fetchPromise = fetch('/blog-search2');
+            // alert(fetchPromise);
+            fetchPromise.then((response) => {
+                const jsonPromise = response.json();
+                alert (jsonPromise);
+                jsonPromise.then((data) => {
+                    document.getElementById("request").innerHTML = data[0].name+" "+data[0].price;
+                });
+            });
+            document.getElementById("request").innerHTML= "Request Started";
+            console.log("Started request…");
+        }
+
+
+        searchSuggest = ()=>{
+            var str = document.getElementById('search').value;
+            var str = "?search="+str;   
+            var xhttp = new XMLHttpRequest(); 
+            
+            //xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            //xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            //xhttp.setRequestHeader('X-CSRF-Token','{{ csrf_token() }}');
+            // xhttp.open("GET", "{{url('/blog-search/{search}')}}", true);	
+            xhttp.open("GET", '/blog-search'+str,true);
+            xhttp.onreadystatechange = ()=> {
+                if (xhttp.readyState == 4 && xhttp.status == 200){
+                    document.getElementById("demo").innerHTML= xhttp.responseText;
+                }
+            }
+            
+            xhttp.send();            
+        }
+        
+    </script>
