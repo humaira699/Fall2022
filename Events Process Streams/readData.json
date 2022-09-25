@@ -1,0 +1,19 @@
+{
+"facultyData":{
+"fc1":{
+	"Name": "Humaira Waqas",
+	"Department": "CS",
+	"Courses": ["Web1","Web2"]
+},
+"fc2":{
+	"Name": "Saira Baig",
+	"Department": "CS",
+	"Courses": ["SQA1","SQA2"]
+},
+"fc3":{
+	"Name": "Shela Saif",
+	"Department": "CS",
+	"Courses": ["Data Science","Artificial Intelligence"]
+}
+}
+}
